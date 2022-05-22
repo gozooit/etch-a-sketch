@@ -1,0 +1,16 @@
+html {
+	font-size: 62.5%;
+}
+
+/* thanks to font-size we can know the value of rem
+1rem = 10px
+1.5rem = 15px
+102.4rem = 1024px */
+
+#container {
+    display: flex;
+}
+
+.tile {
+    border: 2px solid black;
+}
