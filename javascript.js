@@ -37,3 +37,32 @@ function removeClass(cssSelector, className) {
         };
     })
 }
+
+function addTile(tileId) {
+    const container = document.querySelector('#container');
+    const tile = document.createElement('div');
+    tile.setAttribute('id', `${tileId}`);
+    tile.classList.add('tile');
+    container.appendChild(tile);
+}
+
+function createTileId(i) {
+    let tileId;
+    let x;
+    let y;
+    if (i <= 16) {
+        tileId = `${i}x1`;
+    } else {
+        x = i % 16;
+        if (x === 0) {
+            x = 16;
+        }
+        y = Math.ceil(i / 16);
+        tileId = `${x}x${y}`;
+    };
+    return tileId;
+}
+
+for (i=1; i < (16 * 16) + 1; i++) {
+    addTile(createTileId(i));
+}
