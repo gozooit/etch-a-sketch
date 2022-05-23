@@ -29,13 +29,6 @@ function addClass(cssSelector, className) {
     })
 }
 
-function addClassOne(cssSelector, className) {
-    const element = document.querySelector(`${cssSelector}`);
-    if (!element.classList.contains(className)) {
-        element.classList.add(className);
-    };
-}
-
 function removeClass(cssSelector, className) {
     const elements = document.querySelectorAll(`${cssSelector}`);
     elements.forEach(element => {
@@ -44,6 +37,14 @@ function removeClass(cssSelector, className) {
         };
     })
 }
+
+
+//
+//
+// above is just maybe usefull classes
+//
+//
+
 
 function addTile(tileId) {
     const container = document.querySelector('#container');
@@ -87,6 +88,11 @@ function addMouseoverClass(e) {
     addClass(`#${e.target.id}`, 'mouseover');
 };
 
+function setRandomColor(e) {
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    this.style.background = `#${randomColor}`;
+}
+
 function createSizeOption() {
     const select = document.querySelector('select');
     let size;
@@ -107,14 +113,15 @@ function refreshGrid(e) {
     createGrid(parseInt(this.value));
     // this.value = la valeur selectionnee dans l'evenement
     const tiles = document.querySelectorAll('.tile');
-    tiles.forEach(tile => tile.addEventListener('mouseover', addMouseoverClass));   
+    tiles.forEach(tile => tile.addEventListener('mouseover', setRandomColor));   
 }
 
 createSizeOption();
 createGrid(16);
 
 const tiles = document.querySelectorAll('.tile');
-tiles.forEach(tile => tile.addEventListener('mouseover', addMouseoverClass));
+tiles.forEach(tile => tile.addEventListener('mouseover', setRandomColor));
+// tiles.forEach(tile => tile.addEventListener('mouseover', addMouseoverClass));
 
 const sizeList = document.querySelector('#size-list');
 sizeList.addEventListener('change', refreshGrid);
