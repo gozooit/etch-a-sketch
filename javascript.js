@@ -107,9 +107,22 @@ function createSizeOption() {
 //     addTile(createTileId(i));
 // }
 
+function refreshGrid(e) {
+    console.log(e.value);
+}
+
 createSizeOption();
 createGrid(16);
 
 const tiles = document.querySelectorAll('.tile');
 tiles.forEach(tile => tile.addEventListener('mouseover', addMouseoverClass));
 // tiles.forEach(tile => tile.addEventListener('mouseout', removeMouseoverClass));
+
+const sizeList = document.querySelector('#size-list');
+sizeList.addEventListener('change', refreshGrid);
+
+// const options = document.querySelectorAll('options');
+// options.forEach(option => option.addEventListener('click', refreshGrid));
+
+// const sizeButton = document.querySelector('#size-button');
+// sizeButton.addEventListener('click', refreshGrid);
