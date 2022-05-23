@@ -76,10 +76,10 @@ function addMouseoverClass(e) {
     addClass(`#${e.target.id}`, 'mouseover');
 }
 
-function removeMouseoverClass(e) {
-    console.log(e.target.id);
-    removeClass(`#${e.target.id}`, 'mouseover');
-}
+// function removeMouseoverClass(e) {
+//     console.log(e.target.id);
+//     removeClass(`#${e.target.id}`, 'mouseover');
+// }
 
 for (i=1; i < (16 * 16) + 1; i++) {
     addTile(createTileId(i));
@@ -87,4 +87,4 @@ for (i=1; i < (16 * 16) + 1; i++) {
 
 const tiles = document.querySelectorAll('.tile');
 tiles.forEach(tile => tile.addEventListener('mouseover', addMouseoverClass));
-tiles.forEach(tile => tile.addEventListener('mouseout', removeMouseoverClass));
+// tiles.forEach(tile => tile.addEventListener('mouseout', removeMouseoverClass));
