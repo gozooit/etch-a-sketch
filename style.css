@@ -21,8 +21,6 @@ body {
 }
 
 .tile {
-    width: 5rem;
-    height: 5rem;
     transition: all .07s ease;
 }
 
