@@ -92,6 +92,7 @@ function createSizeOption() {
     let size;
     for (i = 4; i <= 80; i=i+4) {
         size = document.createElement('option');
+        size.setAttribute('id', `grid${i}x${i}`)
         size.setAttribute('value', `${i}`);
         size.textContent = `${i} x ${i}`;
         select.appendChild(size);
@@ -108,7 +109,14 @@ function createSizeOption() {
 // }
 
 function refreshGrid(e) {
-    console.log(e.value);
+    // console.log(this.value);
+    // delete all element in container
+    const container = document.querySelector('#container');
+    container.innerHTML = '';
+    createGrid(parseInt(this.value));
+    // this.value = la valeur selectionnee dans l'evenement
+    const tiles = document.querySelectorAll('.tile');
+    tiles.forEach(tile => tile.addEventListener('mouseover', addMouseoverClass));   
 }
 
 createSizeOption();
