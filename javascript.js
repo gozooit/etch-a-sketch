@@ -23,16 +23,23 @@ function removeAttribute(cssSelector, attribute) {
 function addClass(cssSelector, className) {
     const elements = document.querySelectorAll(`${cssSelector}`);
     elements.forEach(element => {
-        if (!element.classList.contains($className)) {
+        if (!element.classList.contains(className)) {
             element.classList.add(className);
         };
     })
 }
 
+function addClassOne(cssSelector, className) {
+    const element = document.querySelector(`${cssSelector}`);
+    if (!element.classList.contains(className)) {
+        element.classList.add(className);
+    };
+}
+
 function removeClass(cssSelector, className) {
     const elements = document.querySelectorAll(`${cssSelector}`);
     elements.forEach(element => {
-        if (element.classList.contains($className)) {
+        if (element.classList.contains(className)) {
             element.classList.remove(className);
         };
     })
@@ -51,18 +58,27 @@ function createTileId(i) {
     let x;
     let y;
     if (i <= 16) {
-        tileId = `${i}x1`;
+        tileId = `x${i}y1`;
     } else {
         x = i % 16;
         if (x === 0) {
             x = 16;
         }
         y = Math.ceil(i / 16);
-        tileId = `${x}x${y}`;
+        tileId = `x${x}y${y}`;
     };
     return tileId;
+}
+
+function addMouseoverClass(e) {
+    // console.log(e.target.id);
+    addClass(`#${e.target.id}`, 'mouseover');
 }
 
 for (i=1; i < (16 * 16) + 1; i++) {
     addTile(createTileId(i));
 }
+
+const tiles = document.querySelectorAll('.tile');
+tiles.forEach(tile => tile.addEventListener('mouseenter', addMouseoverClass));
+

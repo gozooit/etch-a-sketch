@@ -7,14 +7,25 @@ html {
 1.5rem = 15px
 102.4rem = 1024px */
 
+body {
+    display: flex;
+    justify-content: center;
+}
+
 #container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: 80rem;
+    border: 1px solid black;
 }
 
 .tile {
-    border: 2px solid black;
-    width: 10rem;
-    height: 10rem;
+    width: 5rem;
+    height: 5rem;
+    transition: all .07s ease;
+}
+
+.mouseover {
+    background-color: #ffc600;
 }
