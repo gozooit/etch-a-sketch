@@ -99,15 +99,6 @@ function createSizeOption() {
     };
 }
 
-// function removeMouseoverClass(e) {
-//     console.log(e.target.id);
-//     removeClass(`#${e.target.id}`, 'mouseover');
-// }
-
-// for (i=1; i < (16 * 16) + 1; i++) {
-//     addTile(createTileId(i));
-// }
-
 function refreshGrid(e) {
     // console.log(this.value);
     // delete all element in container
@@ -124,13 +115,6 @@ createGrid(16);
 
 const tiles = document.querySelectorAll('.tile');
 tiles.forEach(tile => tile.addEventListener('mouseover', addMouseoverClass));
-// tiles.forEach(tile => tile.addEventListener('mouseout', removeMouseoverClass));
 
 const sizeList = document.querySelector('#size-list');
 sizeList.addEventListener('change', refreshGrid);
-
-// const options = document.querySelectorAll('options');
-// options.forEach(option => option.addEventListener('click', refreshGrid));
-
-// const sizeButton = document.querySelector('#size-button');
-// sizeButton.addEventListener('click', refreshGrid);
