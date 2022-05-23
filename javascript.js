@@ -53,37 +53,52 @@ function addTile(tileId) {
     container.appendChild(tile);
 }
 
-function createTileId(i) {
+function createTileId(i, size) {
     let tileId;
     let x;
     let y;
-    if (i <= 16) {
+    if (i <= size) {
         tileId = `x${i}y1`;
     } else {
-        x = i % 16;
+        x = i % size;
         if (x === 0) {
-            x = 16;
+            x = size;
         }
-        y = Math.ceil(i / 16);
+        y = Math.ceil(i / size);
         tileId = `x${x}y${y}`;
     };
+    console.log(tileId)
     return tileId;
-}
+};
+
+function createGrid(size) {
+    for (i=1; i < (size * size) + 1; i++) {
+        addTile(createTileId(i, size));
+    };
+    const tileSize = 80 / size;
+    const tiles = document.querySelectorAll('.tile');
+    tiles.forEach(tile => {
+        tile.style.width = `${tileSize}em`;
+        tile.style.height = `${tileSize}em`;
+    })
+};
 
 function addMouseoverClass(e) {
     // console.log(e.target.id);
     console.log(e);
     addClass(`#${e.target.id}`, 'mouseover');
-}
+};
 
 // function removeMouseoverClass(e) {
 //     console.log(e.target.id);
 //     removeClass(`#${e.target.id}`, 'mouseover');
 // }
 
-for (i=1; i < (16 * 16) + 1; i++) {
-    addTile(createTileId(i));
-}
+// for (i=1; i < (16 * 16) + 1; i++) {
+//     addTile(createTileId(i));
+// }
+
+createGrid(4);
 
 const tiles = document.querySelectorAll('.tile');
 tiles.forEach(tile => tile.addEventListener('mouseover', addMouseoverClass));
