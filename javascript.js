@@ -67,7 +67,6 @@ function createTileId(i, size) {
         y = Math.ceil(i / size);
         tileId = `x${x}y${y}`;
     };
-    console.log(tileId)
     return tileId;
 };
 
@@ -85,9 +84,19 @@ function createGrid(size) {
 
 function addMouseoverClass(e) {
     // console.log(e.target.id);
-    console.log(e);
     addClass(`#${e.target.id}`, 'mouseover');
 };
+
+function createSizeOption() {
+    const select = document.querySelector('select');
+    let size;
+    for (i = 4; i <= 80; i=i+4) {
+        size = document.createElement('option');
+        size.setAttribute('value', `${i}`);
+        size.textContent = `${i} x ${i}`;
+        select.appendChild(size);
+    };
+}
 
 // function removeMouseoverClass(e) {
 //     console.log(e.target.id);
@@ -98,7 +107,8 @@ function addMouseoverClass(e) {
 //     addTile(createTileId(i));
 // }
 
-createGrid(4);
+createSizeOption();
+createGrid(16);
 
 const tiles = document.querySelectorAll('.tile');
 tiles.forEach(tile => tile.addEventListener('mouseover', addMouseoverClass));
