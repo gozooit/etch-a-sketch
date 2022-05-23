@@ -72,7 +72,13 @@ function createTileId(i) {
 
 function addMouseoverClass(e) {
     // console.log(e.target.id);
+    console.log(e);
     addClass(`#${e.target.id}`, 'mouseover');
+}
+
+function removeMouseoverClass(e) {
+    console.log(e.target.id);
+    removeClass(`#${e.target.id}`, 'mouseover');
 }
 
 for (i=1; i < (16 * 16) + 1; i++) {
@@ -80,5 +86,5 @@ for (i=1; i < (16 * 16) + 1; i++) {
 }
 
 const tiles = document.querySelectorAll('.tile');
-tiles.forEach(tile => tile.addEventListener('mouseenter', addMouseoverClass));
-
+tiles.forEach(tile => tile.addEventListener('mouseover', addMouseoverClass));
+tiles.forEach(tile => tile.addEventListener('mouseout', removeMouseoverClass));
