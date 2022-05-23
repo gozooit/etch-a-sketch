@@ -9,7 +9,12 @@
     <script src="javascript.js" defer></script>
 </head>
 <body>
-    <select id="size"></select>
+    <div id="select-size">
+        <select id="size-list">
+            <option value="" selected disabled hidden>Choose size</option>
+        </select>
+        <button id="size-button">Refresh grid</button>
+    </div>
     <div id="container"></div>
 </body>
 </html>
